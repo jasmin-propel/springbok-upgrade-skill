@@ -54,34 +54,34 @@ If idk used is 17 or above, we can proceed.
 ### For Java code
 - javax change to Jakarta:
   Search in Java code, replace javax package with Jakarta package:
-  import javax.persistence -> import jakarta.persistence
-  import javax.annotation -> import jakarta.annotation
-  import javax.servlet -> import jakarta.servlet
-  import javax.validation -> import jakarta.validation
+	- import javax.persistence -> import jakarta.persistence
+  	- import javax.annotation -> import jakarta.annotation
+  	- import javax.servlet -> import jakarta.servlet
+  	- import javax.validation -> import jakarta.validation
 - Jackson Package change:
   Search in Java code, replace below:
-    import com.fasterxml.jackson.databind.ObjectMapper -> import tools.jackson.databind.ObjectMapper
-    import com.fasterxml.jackson.core.type.TypeReference -> import tools.jackson.core.type.TypeReference;    
-    import com.fasterxml.jackson.databind.DeserializationFeature; ->  import tools.jackson.databind.DeserializationFeature;
-    import com.fasterxml.jackson.databind.JsonDeserializer; ->  import tools.jackson.databind.ValueDeserializer;
-    import com.fasterxml.jackson.databind.ObjectMapper; -> import tools.jackson.databind.ObjectMapper;
-    import com.fasterxml.jackson.databind.module.SimpleModule; -> import tools.jackson.databind.module.SimpleModule;
-    import com.fasterxml.jackson.core.JsonProcessingException; -> import tools.jackson.core.JacksonException;
-    import com.fasterxml.jackson.databind.JsonNode; -> import tools.jackson.databind.JsonNode;
-    import com.fasterxml.jackson.core.JsonPointer; -> import tools.jackson.core.JsonPointer;
-    import com.fasterxml.jackson.core.type.TypeReference; -> import tools.jackson.core.type.TypeReference;
-    import com.fasterxml.jackson.annotation.JsonInclude; -> import tools.jackson.annotation.JsonInclude;
-    import com.fasterxml.jackson.core.JsonParser; -> import tools.jackson.core.JsonParser;
-    import com.fasterxml.jackson.databind.SerializationFeature; -> import tools.jackson.databind.SerializationFeature;    
-    import com.fasterxml.jackson.annotation.JsonIgnoreProperties; -> No change
-    If see this: import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule; delete it and remove JavaTimeModule setting in code, Jackson 3 default use ISO-8601 this is not needed.
+    - import com.fasterxml.jackson.databind.ObjectMapper -> import tools.jackson.databind.ObjectMapper
+    - import com.fasterxml.jackson.core.type.TypeReference -> import tools.jackson.core.type.TypeReference;    
+    - import com.fasterxml.jackson.databind.DeserializationFeature; ->  import tools.jackson.databind.DeserializationFeature;
+    - import com.fasterxml.jackson.databind.JsonDeserializer; ->  import tools.jackson.databind.ValueDeserializer;
+    - import com.fasterxml.jackson.databind.ObjectMapper; -> import tools.jackson.databind.ObjectMapper;
+    - import com.fasterxml.jackson.databind.module.SimpleModule; -> import tools.jackson.databind.module.SimpleModule;
+    - import com.fasterxml.jackson.core.JsonProcessingException; -> import tools.jackson.core.JacksonException;
+    - import com.fasterxml.jackson.databind.JsonNode; -> import tools.jackson.databind.JsonNode;
+    - import com.fasterxml.jackson.core.JsonPointer; -> import tools.jackson.core.JsonPointer;
+    - import com.fasterxml.jackson.core.type.TypeReference; -> import tools.jackson.core.type.TypeReference;
+    - import com.fasterxml.jackson.annotation.JsonInclude; -> import tools.jackson.annotation.JsonInclude;
+    - import com.fasterxml.jackson.core.JsonParser; -> import tools.jackson.core.JsonParser;
+    - import com.fasterxml.jackson.databind.SerializationFeature; -> import tools.jackson.databind.SerializationFeature;    
+    - import com.fasterxml.jackson.annotation.JsonIgnoreProperties; -> No change
+	If see this: import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule; delete it and remove JavaTimeModule setting in code, Jackson 3 default use ISO-8601 this is not needed.
     Below is a quick summary:
-      Keep: com.fasterxml.jackson.annotation.* (e.g., @JsonProperty, @JsonIgnore, @JsonIgnoreProperties)
-      Change: com.fasterxml.jackson.databind.* → tools.jackson.databind.*
-      Change: com.fasterxml.jackson.core.* → tools.jackson.core.*
+      - Keep: com.fasterxml.jackson.annotation.* (e.g., @JsonProperty, @JsonIgnore, @JsonIgnoreProperties)
+      - Change: com.fasterxml.jackson.databind.* → tools.jackson.databind.*
+      - Change: com.fasterxml.jackson.core.* → tools.jackson.core.*
 - JPA mapping in Springboot 4 is more strict
   	- If database column is defined a Timestamp, the entity mapping must be LocalDateTime, Temporal is out of date. Re-engineer it to use LocalDateTime for mapping object
   	- The mapping member element in POJO need to have exact data type as defined in DB, ex, if it DB column define a datetime, mapping object need to be LocalDateTime; if DB column defined as date, mapping object need to be LocalDate; The also applicable for the parameter parsed to repository methods.
   	-  
-- Junit 4 upgrade to Junit 5
+- Junit 4 upgrade to Junit 5/6
 - 
