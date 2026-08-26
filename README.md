@@ -7,7 +7,7 @@ Upgrade project with Springboot 2/3 to Springboot 4.1.0
 Depend on the start version of Springboot, upgrade from version 2 to version 4 is a bit harder. But the common practice is the same. If the project is using java 1.8 on Springboot 2.X, We need to first upgrade the JDK. Stop working in this case.
 If idk used is 17 or above, we can proceed.
 
-## Know Action
+## Known Action
 ### pom.xml 
 - if project parent is springboot, change parent to
    <parent>
@@ -74,8 +74,14 @@ If idk used is 17 or above, we can proceed.
     import com.fasterxml.jackson.core.JsonParser; -> import tools.jackson.core.JsonParser;
     import com.fasterxml.jackson.databind.SerializationFeature; -> import tools.jackson.databind.SerializationFeature;    
     import com.fasterxml.jackson.annotation.JsonIgnoreProperties; -> No change
-    If see this: mport com.fasterxml.jackson.datatype.jsr310.JavaTimeModule; delete it and remove JavaTimeModule setting in code,     Jackson 3 default use ISO-8601 this is not needed.
+    If see this: import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule; delete it and remove JavaTimeModule setting in code, Jackson 3 default use ISO-8601 this is not needed.
     Below is a quick summary:
       Keep: com.fasterxml.jackson.annotation.* (e.g., @JsonProperty, @JsonIgnore, @JsonIgnoreProperties)
       Change: com.fasterxml.jackson.databind.* → tools.jackson.databind.*
       Change: com.fasterxml.jackson.core.* → tools.jackson.core.*
+- JPA mapping in Springboot 4 is more strict
+  	- If database column is defined a Timestamp, the entity mapping must be LocalDateTime, Temporal is out of date. Re-engineer it to use LocalDateTime for mapping object
+  	- The mapping member element in POJO need to have exact data type as defined in DB, ex, if it DB column define a datetime, mapping object need to be LocalDateTime; if DB column defined as date, mapping object need to be LocalDate; The also applicable for the parameter parsed to repository methods.
+  	-  
+- Junit 4 upgrade to Junit 5
+- 
