@@ -1,17 +1,17 @@
 # Angular Admin Dashboard Build Skill
 
 ## Technology Stack
-### Angular v22
-### Angular material
-### Bootstrap 5 for general layout
+- Angular v22
+- Angular material
+- Bootstrap 5 for general layout
 
 ## Implementation Practice requirement
-### The font color and size will be covered by angular material typography
-### scss stylesheet is centralized, each page no stylesheet file
-### All web implementation using angular material ex: tab, button, table
+- The font color and size will be covered by angular material typography
+- scss stylesheet is centralized, each page no stylesheet file
+- All web implementation using angular material ex: tab, button, table, etc
 
 ## Page layout
-### There are header (can show/hide), side bar (can show/hide), footer and show/hide right bar for notification
+- There are header (can show/hide), side bar (can show/hide), footer and show/hide right bar for notification
 ### side bar contains following menu and groups:
 - Agents Group (accordion) with menu WIP, Sub-WIP, Loan Search
 - Admin Group (accordion) with Request, Assignment Approvals, Profiles List, Group List, System Parameters
@@ -44,3 +44,4 @@ When say action button in page with table:
 #### Search Form
 When say Search form in page with table:
 - Put the search form on the top as accordion, can be opened and closed, for now an empty form with search/reset button, search button trigger a new search, reset button rest all condition to default
+- When search button in search form is clicked, show a progress bar before results returned. At the same time, the menu is freezer, click not allowed.
